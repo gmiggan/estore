@@ -1,0 +1,39 @@
+﻿@using estore.Controllers
+@{
+    ViewBag.Title = "Cart";
+    double sum = 0;
+}
+
+<h2>Cart</h2>
+
+<body>
+    <table cellpadding="2" cellspacing="2" border="1">
+        <tr>
+            <th>Option</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Sub Total</th>
+        </tr>
+       
+        @foreach (Item item in (List<Item>)Session["cart"])
+        {
+            sum += item.Product.Price * item.Quantity;
+            <tr>
+                <th>@Html.ActionLink("Delete", "Delete", "ShoppingCart", new { id = @item.Product.ProductId}, null)</th>
+                <th>@item.Product.ProductId</th>
+                <th>@item.Product.Title</th>
+                <th>@item.Product.Price</th>
+                <th>@item.Quantity</th>
+                <th>@(item.Product.Price * item.Quantity)</th>
+            </tr>
+        }
+        <tr>
+            <td align="right" colspan="5">Sum: </td>
+            <td> @sum</td>
+        </tr>
+        <
+        @Html.ActionLink("Continue Shopping", "Index", "Products")
+    </table>
+</body>

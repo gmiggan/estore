@@ -54,7 +54,17 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Category.ID , new SelectList(
+                @Html.RadioButtonFor(m => m.Category.ID, 8) Accesories
+                @Html.RadioButtonFor(m => m.Category.ID, 5) Cable/Wire
+                @Html.RadioButtonFor(m => m.Category.ID, 7) Desktop
+                @Html.RadioButtonFor(m => m.Category.ID, 1) Laptop
+                @Html.RadioButtonFor(m => m.Category.ID, 4) Mobile Phone
+                @Html.RadioButtonFor(m => m.Category.ID, 6) Monitor
+                @Html.RadioButtonFor(m => m.Category.ID, 2) Smart Watch
+                @Html.RadioButtonFor(m => m.Category.ID, 3) TV
+
+
+                @*@Html.DropDownListFor(model => model.Category.ID , new SelectList(
                   new List<Object>{ 
                        new { value = 8 , text = "Accesories"  },
                        new { value = 5 , text = "Cable/Wire" },
@@ -68,7 +78,7 @@
                   "value",
                   "text",
                    2));
-                @Html.ValidationMessageFor(model => model.Category.ID, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Category.ID, "", new { @class = "text-danger" })*@
             </div>
         </div>
 

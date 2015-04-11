@@ -68,6 +68,18 @@ namespace estore.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
+
+                List<Product> products = (List<Product>) Session["cart"];
+                foreach(var item in products)
+                {
+                    OrderHistory hist = new OrderHistory();
+                    hist.date = new DateTime();
+                    hist.user = db.Users.Find(User.Identity.GetUserId());
+                    hist.product = item;
+                    db.OrderHistories.Add(hist);
+                    db.SaveChanges();
+                }
+
             }
             return View("Create");
         }

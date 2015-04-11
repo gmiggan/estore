@@ -9,7 +9,15 @@ namespace estore.Models
     {
         public MasterCard(String number, String month, String year) : base (number, month, year){}
 	
-	
+	public MasterCard(string p1, int p2, int p3)
+    {
+        
+        base.cardNumber = p1;
+        base.expiryMonth = p2;
+        base.expiryYear = p3;
+    }
+
+
 	protected override bool checkNumberOfDigits() {
 		int numberOfDigits = cardNumber.Length;
 		if (numberOfDigits == 16)

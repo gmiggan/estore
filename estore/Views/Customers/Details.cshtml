@@ -1,0 +1,74 @@
+﻿@model estore.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.billingaddress1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.billingaddress1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.billingaddress2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.billingaddress2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.billingaddress3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.billingaddress3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.postaladdress1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.postaladdress1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.postaladdress2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.postaladdress2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.postaladdress3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.postaladdress3)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

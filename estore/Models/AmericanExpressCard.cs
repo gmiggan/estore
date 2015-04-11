@@ -6,8 +6,17 @@ using System.Web;
 namespace estore.Models
 {
     public class AmericanExpressCard : CreditCard {
-	
+       
 	public AmericanExpressCard(String number, String month, String year) : base(number, month, year){}
+
+    public AmericanExpressCard(string p1, int p2, int p3)
+    {
+
+
+        base.cardNumber = p1;
+        base.expiryMonth = p2;
+        base.expiryYear = p3;
+    }
 
     protected override bool checkNumberOfDigits()
     {

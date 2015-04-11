@@ -26,7 +26,7 @@ namespace estore.Models
 
         public int expiryYear { get; set; }
 
-        
+        public String type { get; set; }
         public virtual ApplicationUser user { get; set; }
 
         

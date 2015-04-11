@@ -163,18 +163,30 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CreditCardsController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Item.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Migrations\201504111230414_wgegr.cs" />
     <Compile Include="Migrations\201504111230414_wgegr.Designer.cs">
       <DependentUpon>201504111230414_wgegr.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504111754061_dsfdsf.cs" />
+    <Compile Include="Migrations\201504111754061_dsfdsf.Designer.cs">
+      <DependentUpon>201504111754061_dsfdsf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504111933221_ewfe.cs" />
+    <Compile Include="Migrations\201504111933221_ewfe.Designer.cs">
+      <DependentUpon>201504111933221_ewfe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AmericanExpressCard.cs" />
     <Compile Include="Models\CardDetailsModel.cs" />
     <Compile Include="Models\MasterCard.cs" />
+    <Compile Include="Models\OrderHistory.cs" />
+    <Compile Include="Models\ReviewModel.cs" />
     <Compile Include="Models\VisaCard.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -280,6 +292,16 @@
     <Content Include="Views\CreditCards\Details.cshtml" />
     <Content Include="Views\CreditCards\Edit.cshtml" />
     <Content Include="Views\CreditCards\Index.cshtml" />
+    <Content Include="Views\ReviewModels\Create.cshtml" />
+    <Content Include="Views\ReviewModels\Delete.cshtml" />
+    <Content Include="Views\ReviewModels\Details.cshtml" />
+    <Content Include="Views\ReviewModels\Edit.cshtml" />
+    <Content Include="Views\ReviewModels\Index.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -306,6 +328,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504111230414_wgegr.resx">
       <DependentUpon>201504111230414_wgegr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504111754061_dsfdsf.resx">
+      <DependentUpon>201504111754061_dsfdsf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504111933221_ewfe.resx">
+      <DependentUpon>201504111933221_ewfe.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

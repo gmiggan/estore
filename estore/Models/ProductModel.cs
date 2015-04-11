@@ -18,5 +18,6 @@ namespace estore.Models
         public Double Price { get; set; }
         public Category Category { get; set; }
         public String imageRef { get; set; }
+        public virtual List<ReviewModel> reviews { get; set; }
     }
 }

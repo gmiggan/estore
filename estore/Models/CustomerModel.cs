@@ -11,8 +11,7 @@ namespace estore.Models
     {
         [Key]
         public int id { get; set; }
-        [ForeignKey("ApplicationUser")]
-        public int customerId { get; set; }
+        public ApplicationUser user { get; set; }
         public String Name { get; set; }
         public String billingaddress1 { get; set; }
         public String billingaddress2 { get; set; }

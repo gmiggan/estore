@@ -28,7 +28,9 @@ namespace estore.Models
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<CreditCard> CreditCards { get; set; }
-
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<ReviewModel> Reviews { get; set; }
+        public DbSet<OrderHistory> OrderHistories { get; set; }
 
         public static ApplicationDbContext Create()
         {

@@ -13,118 +13,108 @@ using Microsoft.Owin.Security;
 
 namespace estore.Controllers
 {
-    public class CreditCardsController : Controller
+    public class CustomersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: CreditCards
+        // GET: Customers
         public ActionResult Index()
         {
-            return View(db.CreditCards.ToList());
+            return View(db.Customers.ToList());
         }
 
-        // GET: CreditCards/Details/5
+        // GET: Customers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CreditCard creditCard = db.CreditCards.Find(id);
-            if (creditCard == null)
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            return View(creditCard);
+            return View(customer);
         }
 
-        // GET: CreditCards/Create
+        // GET: Customers/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CreditCards/Create
+        // POST: Customers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,cardNumber,expiryMonth,expiryYear,type")] CreditCard creditCard)
+        public ActionResult Create([Bind(Include = "id,Name,billingaddress1,billingaddress2,billingaddress3,postaladdress1,postaladdress2,postaladdress3")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                CreditCard credCard = null;
-                if (creditCard.type == "AmericanExpress")
-                    credCard = new AmericanExpressCard(creditCard.cardNumber, creditCard.expiryMonth, creditCard.expiryYear);
-                else if (creditCard.type == "MasterCard")
-                    credCard = new MasterCard(creditCard.cardNumber, creditCard.expiryMonth, creditCard.expiryYear);
-                else if (creditCard.type == "Visa")
-                    credCard = new VisaCard(creditCard.cardNumber, creditCard.expiryMonth, creditCard.expiryYear);
-
-                credCard.user = db.Users.Find(User.Identity.GetUserId());
-                if (credCard.validate())
-                {
-                    db.CreditCards.Add(credCard);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
+                customer.user = db.Users.Find(User.Identity.GetUserId());
+                db.Customers.Add(customer);
+                db.SaveChanges();
+                return RedirectToAction("Create", "CreditCards");
             }
-            return View("Create");
+
+            return View(customer);
         }
 
-        // GET: CreditCards/Edit/5
+        // GET: Customers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CreditCard creditCard = db.CreditCards.Find(id);
-            if (creditCard == null)
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            return View(creditCard);
+            return View(customer);
         }
 
-        // POST: CreditCards/Edit/5
+        // POST: Customers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,cardNumber,expiryMonth,expiryYear")] CreditCard creditCard)
+        public ActionResult Edit([Bind(Include = "id,Name,billingaddress1,billingaddress2,billingaddress3,postaladdress1,postaladdress2,postaladdress3")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(creditCard).State = EntityState.Modified;
+                db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(creditCard);
+            return View(customer);
         }
 
-        // GET: CreditCards/Delete/5
+        // GET: Customers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CreditCard creditCard = db.CreditCards.Find(id);
-            if (creditCard == null)
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            return View(creditCard);
+            return View(customer);
         }
 
-        // POST: CreditCards/Delete/5
+        // POST: Customers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CreditCard creditCard = db.CreditCards.Find(id);
-            db.CreditCards.Remove(creditCard);
+            Customer customer = db.Customers.Find(id);
+            db.Customers.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Globalization;
 using System.Linq;
 using System.Web;
@@ -14,9 +16,18 @@ namespace estore.Models
         {
 
         }
-        protected String cardNumber;
+
+        [Key]
+        public int id { get; set; }
+
+        public String cardNumber { get; set; }
         
-        private int expiryMonth, expiryYear;
+        public int expiryMonth {get; set;}
+
+        public int expiryYear { get; set; }
+
+        
+        public virtual ApplicationUser user { get; set; }
 
         
         public CreditCard(String number, String month, String year)

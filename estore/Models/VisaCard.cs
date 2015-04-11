@@ -10,7 +10,7 @@ namespace estore.Models
         public VisaCard(String number, String month, String year) : base(number, month, year) { } 
 	
 	
-	protected bool checkNumberOfDigits() {
+	protected override bool checkNumberOfDigits() {
 		int numberOfDigits = cardNumber.Length;
 		if (numberOfDigits == 13 || numberOfDigits == 16)
 			return true;
@@ -18,7 +18,7 @@ namespace estore.Models
 			return false;	
 	}
 
-	protected bool checkValidPrefix() {
+	protected override bool checkValidPrefix() {
 		String firstDigit = cardNumber.Substring(0, 1);
 
 		if (firstDigit.Equals("4"))

@@ -15,11 +15,11 @@ namespace estore.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Products
-        public ActionResult Index()
-        {
-            var products = db.Products.Include(p => p.Category);
-            return View(products);
-        }
+        //public ActionResult Index()
+        //{
+        //    var products = db.Products.Include(p => p.Category);
+        //    return View(products);
+        //}
 
         // GET: Products/Details/5
         public ActionResult Details(int? id)
@@ -43,6 +43,50 @@ namespace estore.Controllers
             List<Category> categories = new List<Category>();
             return View();
         }
+
+        public ViewResult Index(string sortOrder, string searchString)
+        {
+            
+        ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Title Asc" : "";
+        ViewBag.AgeSortParm = sortOrder == "Age" ? " desc" : "Age";
+        var products = from p in db.Products
+        select p;
+        switch (sortOrder)
+        {
+            case "Title Asc":
+            products= products.OrderByDescending(p => p.Title);
+            break;
+           case "Price":
+            products = products.OrderBy(p => p.Price);
+            break;
+           case "Category":
+            products = products.OrderByDescending(p => p.Category);
+            break;
+           case "Manufacturer":
+            products = products.OrderByDescending(p => p.Manufacturer);
+            break;
+            default:
+            products = products.OrderBy(p => p.Title);
+                break;
+   }
+            if (!String.IsNullOrEmpty(searchString))
+            {
+            
+            var titlematches = products.Where(p => p.Title.ToUpper().Contains(searchString.ToUpper()));
+            var manufacturermatches = products.Where(p => p.Manufacturer.ToUpper().Contains(searchString.ToUpper()));
+            List<Product> resultset = new List<Product>();
+            resultset.AddRange(titlematches);
+            foreach(var item in manufacturermatches)
+                if (!resultset.Contains(item))
+                    resultset.Add(item);
+            
+            return View(resultset);
+            }
+
+            return View(products.ToList());
+}
+
+
 
         // POST: Products/Create
         

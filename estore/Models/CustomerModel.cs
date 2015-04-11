@@ -7,12 +7,13 @@ using System.Web;
 
 namespace estore.Models
 {
-    public class BillingDetails
+    public class Customer
     {
         [Key]
         public int id { get; set; }
         [ForeignKey("ApplicationUser")]
         public int customerId { get; set; }
+        public String Name { get; set; }
         public String billingaddress1 { get; set; }
         public String billingaddress2 { get; set; }
         public String billingaddress3 { get; set; }

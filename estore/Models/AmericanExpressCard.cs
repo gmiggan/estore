@@ -8,9 +8,9 @@ namespace estore.Models
     public class AmericanExpressCard : CreditCard {
 	
 	public AmericanExpressCard(String number, String month, String year) : base(number, month, year){}
-	
 
-	protected bool checkNumberOfDigits() {
+    protected override bool checkNumberOfDigits()
+    {
 		int numberOfDigits = cardNumber.Length;
 		if (numberOfDigits == 15)
 			return true;
@@ -18,7 +18,7 @@ namespace estore.Models
 			return false;
 	}
 
-	protected bool checkValidPrefix() {
+	protected override bool checkValidPrefix() {
 		String prefix = cardNumber.Substring(0, 2);
 		if (prefix.Equals("34") || prefix.Equals("37"))
 			return true;

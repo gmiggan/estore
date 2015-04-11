@@ -41,6 +41,10 @@
             @Html.DisplayNameFor(model => model.imageRef)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.stock)
+        </th>
+
+        <th>
             @Html.ActionLink("Category", "Index", new { sortOrder = "Category" })
         </th>
         <th></th>
@@ -58,8 +62,13 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.imageRef)
+            <img src="~/Content/@item.imageRef" />
+            
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stock)
+        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.Category.Name)
         </td>
